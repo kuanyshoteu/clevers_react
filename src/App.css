@@ -207,8 +207,6 @@ textarea{
 .non-vertical-scroll{
     overflow-y: hidden;
 }
-.horiz-scroll{
-}
 .column{
     width: 272px;
 }

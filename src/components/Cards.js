@@ -8,11 +8,16 @@ function ColumnCards(){
 }
 
 function Card(index){
-    let card = <div class="ticket my-2">
-                <div class="bg-white py-1 px-3 shadow-sm rounded">
+    let card = <div id={index} onDragStart={drag} draggable="true" className="ticket my-2">
+                <div className="bg-white py-1 px-3 shadow-sm rounded">
                     Card {index}
                 </div>  
             </div>
     return card
 }
+function drag(ev){
+    ev.dataTransfer.setData("text", ev.target.id);
+    console.log(ev.dataTransfer)
+}
+
 export default ColumnCards
