@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import logo from './airplane.png';
 import './App.css';
+import Header from './components/Header';
+import Trello from './components/Columns';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div>
+            <Header />
+            <Trello />
+        </div>
+    )
 }
+
+function Hundred(){
+    var buttons = [] 
+    for(var i = 0; i < 100; i++){
+        var button = <button className='menuLink'>Privet + {i}</button>
+        buttons.push(button)
+    }
+    return buttons
+}
+
+
 
 export default App;
