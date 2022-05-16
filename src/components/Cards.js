@@ -1,14 +1,15 @@
 
-function ColumnCards(){
+function ColumnCards(columnIndex){
     let cards = []
     for(var i = 0; i < 4; i++){
-        cards.push(Card(i))
+        cards.push(Card(columnIndex*4 + i))
     }
     return cards
 }
 
 function Card(index){
-    let card = <div id={index} onDragStart={drag} draggable="true" className="ticket my-2">
+    let id = 'card' + index
+    let card = <div id={id} onDragStart={drag} draggable="true" className="ticket my-2">
                 <div className="bg-white py-1 px-3 shadow-sm rounded">
                     Card {index}
                 </div>  
