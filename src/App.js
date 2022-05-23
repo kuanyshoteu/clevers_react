@@ -13,6 +13,19 @@ function App() {
     )
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+// 19:05 
 function Hundred(){
     var buttons = [] 
     for(var i = 0; i < 100; i++){

@@ -2,6 +2,8 @@ import ColumnCards from './Cards';
 
 
 let data = [[]]
+
+
 function Trello(){
     let table = []
     for (var i = 0; i <= 5; i++){
