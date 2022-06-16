@@ -2,13 +2,22 @@ import logo from './airplane.png';
 import './App.css';
 import Header from './components/Header';
 import Trello from './components/Columns';
+import CardInterface from './components/CardInterface';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import React from 'react';
+import Task from './components/Task'
+import Task2 from './components/Task2'
+import data from './components/data'
+import dataTrello from './components/dataTrello'
 
 function App() {
+    // Task2({data: data, a:5, b:6})
     return (
         <div>
             <Header />
-            <Trello />
+            <Trello dataTrello={dataTrello} />
+            <CardInterface />
+            
         </div>
     )
 }
