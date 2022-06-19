@@ -1,24 +1,47 @@
 import React from 'react';
 import Card from './Cards';
 
-function Trello({dataTrello}){
+function Trello({dataTrello, setModalCardObject}){
     let [cardId, setCardId] = React.useState(7)
+    let [dataTrelloObject, setDataTrello2] = React.useState({data: dataTrello})
+    function addColumn(){
+        setDataTrello2(oldDataTrelloObject => {
+            let newId = oldDataTrelloObject.data.length + 1
+            let newDataTrelloArray = oldDataTrelloObject.data
+            newDataTrelloArray.push(
+                {
+                    name: "Column",
+                    id: newId,
+                    cards: [],
+                }
+            )
+            let newDataTrelloObject = {
+                ...oldDataTrelloObject,
+                data: newDataTrelloArray,
+            }
+            return newDataTrelloObject
+        })
+    }
     return (
+        <React.Fragment>
         <div className='flex'>
             {
-                dataTrello.map((crntColumnObject) => {
-                    return <Column key={crntColumnObject.id} cardId={cardId} setCardId={setCardId} crntColumnObject={crntColumnObject}/>;
+                dataTrelloObject.data.map((crntColumnObject) => {
+                    return <Column key={crntColumnObject.id} cardId={cardId} setCardId={setCardId} crntColumnObject={crntColumnObject} setModalCardObject={setModalCardObject}/>;
                 } )
             }
         </div>
+        <div className='flex centered'>
+            <button onClick={addColumn}>Добавить столбец</button>
+        </div>
+        </React.Fragment>
     )
 }
 
-function Column({crntColumnObject, cardId, setCardId}){
+function Column({setModalCardObject, crntColumnObject, cardId, setCardId}){
     let [cardsArrayObject, setCardsArray] = React.useState({cardsArray: crntColumnObject.cards})
     
     function addCard(){
-        
         setCardId(cardId + 1)
         setCardsArray((oldCardsArrayObject) => {
             let oldCardsArray = oldCardsArrayObject.cardsArray
@@ -44,7 +67,7 @@ function Column({crntColumnObject, cardId, setCardId}){
             <div className='allowDrop' onDrop={drop} onDragOver={allowDrop}>
                 {
                     cardsArrayObject.cardsArray.map((crntCardObject) => {
-                        return <Card key={"card"+crntCardObject.id} crntCardObject={crntCardObject} />
+                        return <Card setModalCardObject={setModalCardObject} key={"card"+crntCardObject.id} crntCardObject={crntCardObject} />
                     })
                 }
             </div>

@@ -2,7 +2,7 @@ import logo from './airplane.png';
 import './App.css';
 import Header from './components/Header';
 import Trello from './components/Columns';
-import CardInterface from './components/CardInterface';
+import CardInterface from './components/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React from 'react';
 import Task from './components/Task'
@@ -11,14 +11,30 @@ import data from './components/data'
 import dataTrello from './components/dataTrello'
 
 function App() {
-    // Task2({data: data, a:5, b:6})
+    let [counter, setCounter] = React.useState(0)
+    let [randomuser, setRandomUser] = React.useState({})
+    let [modalCardObject, setModalCardObject] = React.useState({name:"YO"})
+    // React.useEffect(deistvia, [])
+    // let getAPI = async() => {
+    //     fetch(
+    //         "https://randomuser.me/api/",
+    //         {
+    //             method: 'GET',
+    //         }
+    //         ).then(result => {
+    //             console.log(result)
+    //             setRandomUser(result)
+    //         }), [randomuser]
+    //     }
+    // React.useEffect(()=>{getAPI()})
     return (
-        <div>
-            <Header />
-            <Trello dataTrello={dataTrello} />
-            <CardInterface />
-            
-        </div>
+        <React.Fragment>
+            <div id='mainScreen'>
+                <Header />
+                <Trello setModalCardObject={setModalCardObject} dataTrello={dataTrello} />
+            </div>
+            <CardInterface modalCardObject={modalCardObject} />
+        </React.Fragment>
     )
 }
 
