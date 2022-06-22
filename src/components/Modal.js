@@ -12,7 +12,8 @@ function CardInterface({modalCardObject}){
         )
 }
 function hideModal(event){
-    if(event.target.classList.includes('allowHide')){
+    console.log(event.target.classList)
+    if(event.target.classList[0] == 'allowHide'){
         let modal = document.getElementById('modalScreen')
         let main = document.getElementById('mainScreen')
         modal.classList.add('hidden')

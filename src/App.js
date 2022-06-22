@@ -27,12 +27,22 @@ function App() {
     //         }), [randomuser]
     //     }
     // React.useEffect(()=>{getAPI()})
+    let num = 0
+    const expensiveCalculation = (num) => {
+        console.log("Calculating...");
+        for (let i = 0; i < 1000000000; i++) {
+          num += 1;
+        }
+        return num;
+      };
+      expensiveCalculation(num)
     return (
         <React.Fragment>
             <div id='mainScreen'>
                 <Header />
                 <Trello setModalCardObject={setModalCardObject} dataTrello={dataTrello} />
             </div>
+            
             <CardInterface modalCardObject={modalCardObject} />
         </React.Fragment>
     )

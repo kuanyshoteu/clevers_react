@@ -244,3 +244,9 @@ textarea{
         background-color: rgba(0, 0, 0, 0.3);
     }
 }
+
+.allowHide{
+    position: absolute;
+    right: 15px;
+    top: -30px;
+}
