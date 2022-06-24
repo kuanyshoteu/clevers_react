@@ -9,9 +9,13 @@ import Task from './components/Task'
 import Task2 from './components/Task2'
 import data from './components/data'
 import dataTrello from './components/dataTrello'
+import { useState } from 'react';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 
+
+export const ModalContext = React.createContext(null)
 function App() {
-    let [counter, setCounter] = React.useState(0)
+    let [counter, setCounter] = useState(0)
     let [randomuser, setRandomUser] = React.useState({})
     let [modalCardObject, setModalCardObject] = React.useState({name:"YO"})
     // React.useEffect(deistvia, [])
@@ -27,24 +31,36 @@ function App() {
     //         }), [randomuser]
     //     }
     // React.useEffect(()=>{getAPI()})
-    let num = 0
-    const expensiveCalculation = (num) => {
-        console.log("Calculating...");
-        for (let i = 0; i < 1000000000; i++) {
-          num += 1;
-        }
-        return num;
-      };
-      expensiveCalculation(num)
+    // let num = 0
+    // const expensiveCalculation = (num) => {
+    //     console.log("Calculating...");
+    //     for (let i = 0; i < 1000000000; i++) {
+    //       num += 1;
+    //     }
+    //     return num;
+    //   };
+    //   expensiveCalculation(num)
     return (
-        <React.Fragment>
+        <ModalContext.Provider value={setModalCardObject}>
+            <BrowserRouter>
             <div id='mainScreen'>
-                <Header />
-                <Trello setModalCardObject={setModalCardObject} dataTrello={dataTrello} />
+                <section className="flex header mb-50">
+                    <div className="logo">My Site</div>
+                    <div className="menu">
+                        <a className="menuLink" href="/trello">Trello Copy</a>
+                        <a className="menuLink" href='/task'>Instagram Copy</a>
+                    </div>
+                </section>
+                <Routes>
+                    <Route path="/trello" element={<Trello dataTrello={dataTrello} />}></Route>
+                    <Route path="/task" element={<Task />}></Route>
+                </Routes>
+                
+                Это главная страница                
             </div>
-            
+            </BrowserRouter>
             <CardInterface modalCardObject={modalCardObject} />
-        </React.Fragment>
+        </ModalContext.Provider>
     )
 }
 

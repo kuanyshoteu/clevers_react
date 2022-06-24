@@ -245,8 +245,9 @@ textarea{
     }
 }
 
-.allowHide{
+.allowHideX{
     position: absolute;
-    right: 15px;
-    top: -30px;
+    left: 50%;
+    top: 100px;
+    cursor: pointer;
 }

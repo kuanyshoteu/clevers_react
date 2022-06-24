@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './Cards';
 
-function Trello({dataTrello, setModalCardObject}){
+function Trello({dataTrello}){
     let [cardId, setCardId] = React.useState(7)
     let [dataTrelloObject, setDataTrello2] = React.useState({data: dataTrello})
     function addColumn(){
@@ -27,7 +27,7 @@ function Trello({dataTrello, setModalCardObject}){
         <div className='flex'>
             {
                 dataTrelloObject.data.map((crntColumnObject) => {
-                    return <Column key={crntColumnObject.id} cardId={cardId} setCardId={setCardId} crntColumnObject={crntColumnObject} setModalCardObject={setModalCardObject}/>;
+                    return <Column key={crntColumnObject.id} cardId={cardId} setCardId={setCardId} crntColumnObject={crntColumnObject} />;
                 } )
             }
         </div>
@@ -38,7 +38,7 @@ function Trello({dataTrello, setModalCardObject}){
     )
 }
 
-function Column({setModalCardObject, crntColumnObject, cardId, setCardId}){
+function Column({crntColumnObject, cardId, setCardId}){
     let [cardsArrayObject, setCardsArray] = React.useState({cardsArray: crntColumnObject.cards})
     
     function addCard(){
@@ -67,7 +67,7 @@ function Column({setModalCardObject, crntColumnObject, cardId, setCardId}){
             <div className='allowDrop' onDrop={drop} onDragOver={allowDrop}>
                 {
                     cardsArrayObject.cardsArray.map((crntCardObject) => {
-                        return <Card setModalCardObject={setModalCardObject} key={"card"+crntCardObject.id} crntCardObject={crntCardObject} />
+                        return <Card key={"card"+crntCardObject.id} crntCardObject={crntCardObject} />
                     })
                 }
             </div>

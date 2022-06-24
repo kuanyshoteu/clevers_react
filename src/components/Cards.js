@@ -1,5 +1,9 @@
+import React from "react";
+import {ModalContext} from '../App'
 
-export default function Card({crntCardObject, setModalCardObject}){
+export default function Card({crntCardObject}){
+    const setModalCardObject = React.useContext(ModalContext);
+    console.log(setModalCardObject)
     function showModal(){
         setModalCardObject(crntCardObject)
         let modal = document.getElementById('modalScreen')

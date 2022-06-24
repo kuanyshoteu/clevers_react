@@ -5,7 +5,7 @@ function CardInterface({modalCardObject}){
     return (
         <div onClick={hideModal} id='modalScreen' className="allowHide hidden modalScreen">
             <div className='modalBox'>
-                <div className="allowHide">x</div>
+                <div className="allowHide allowHideX">x</div>
                 {modalCardObject.name}
             </div>
         </div>
